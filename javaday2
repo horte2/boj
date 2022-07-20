@@ -1,0 +1,242 @@
+/*
+ 이상함 실패
+package pack1;
+
+import java.util.Scanner;
+
+public class day2 
+{
+
+	public static int fact(int n) 
+	{		
+		if (n <= 1) return n;
+		else return fact(n-1) * n;
+	}
+	public static void main(String[] args) 
+	{
+		Scanner input = new Scanner(System.in);
+		
+		int sum = 0, pp=0;
+		int A = input.nextInt();
+		int M = input.nextInt();
+		int psum[] = new int[A];
+		psum[0] = input.nextInt();
+		psum[0] = psum[0] % M;
+		if(psum[0] == 0) sum += 1;
+		for(int i=1; i<A; i++)
+		{
+			int tc = input.nextInt();
+			psum[i] = psum[i-1] + tc;
+			psum[i] = psum[i] % M;
+			if(psum[i] == 0) sum += 1;
+		}
+
+		input.close();
+	}
+
+}
+*/
+/*
+package pack1;
+
+import java.util.Scanner;
+
+public class day2 
+{
+	
+	public static void main (String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		
+		int A = input.nextInt();
+		int M = input.nextInt();
+		int MCnt[] = new int[M]; 
+		int sum=0;
+		int psum[] = new int[A];
+		psum[0] = input.nextInt();
+		if(psum[0] % M == 0) sum += 1;
+		for(int i=1; i<A; i++)
+		{
+			int tc = input.nextInt();
+			psum[i] = psum[i-1] + tc;
+			++MCnt[psum[i]%M];
+			if(psum[i]%M == 0) sum += 1;
+		}
+		for(int i=0; i<M; i++)
+		{
+			sum += (MCnt[i] * (MCnt[i]-1))/2;
+		}
+		System.out.println(sum);
+	}
+}
+*/
+/*
+연속 자연수 덧셈
+package pack1;
+
+import java.util.Scanner;
+
+public class day2 
+{
+	
+	public static void main (String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		int N = input.nextInt();
+		int sum=1, count=1, start=1, end=1;
+		while(start <= N/2)
+		{
+			if(sum > N) 
+			{
+				++start;
+				sum -= (start-1);
+			}
+			else if(sum < N )
+			{
+				++end;
+				sum += end;
+			}
+			else if(sum == N)
+			{
+				++count;
+				++end;
+				sum += end;
+			}
+		}
+		System.out.println(count);
+		input.close();
+	}
+}
+*/
+/*
+포인터 두 개 사용 탐색
+package pack1;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class day2 
+{
+	
+	public static void main (String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		int N = input.nextInt();
+		int M = input.nextInt();
+		int count = 0;
+		int num[] = new int[N];
+		for(int i=0; i<N; i++)
+		{
+			num[i] = input.nextInt();
+		}
+		
+		Arrays.sort(num);
+		int i=0, j=N-1;
+		while(i < j)
+		{
+			if(num[i]+num[j] > M) j--;
+			else if(num[i]+num[j] < M) i++;
+			else {i++; j--; count++;}
+		}
+		System.out.println(count);
+		input.close();
+	}
+}
+*/
+/*
+k기준 포인터 두 개 사용 탐색
+package pack1;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class day2 
+{
+	
+	public static void main (String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		
+		int N = input.nextInt();
+		int tc[] = new int[N];
+		int count=0;
+		
+		for(int i=0; i<N; i++)
+		{
+			tc[i] = input.nextInt();
+		}
+		Arrays.sort(tc);
+		
+		for(int k=2; k<N; k++)
+		{
+			int i=0, j=k-1; 
+			while(i < j)
+			{
+				if(tc[i] + tc[j] > tc[k]) j--;
+				else if(tc[i] + tc[j] < tc[k]) i++;
+				else {count++; break;}
+			}
+		}
+		System.out.println(count);
+		input.close();
+	}
+}
+*/
+/*
+ 스택
+package pack1;
+
+import java.util.Stack;
+
+public class day2 
+{
+	
+	public static void main (String[] args)
+	{
+		Stack<Integer> stack = new Stack<Integer>();
+		
+		stack.push(10);
+		stack.push(15);
+		stack.push(30);
+		stack.push(20);
+		stack.push(5);
+		System.out.println("Initial Stack: "+stack);
+		
+		System.out.println("pop: "+stack.pop());
+		System.out.println("pop: "+stack.pop());
+		System.out.println("Stack after pop: "+stack);
+		
+		System.out.println("pop: "+stack.pop());
+		System.out.println("Stack after pop: "+stack);
+		
+		System.out.println("peek: "+stack.peek());
+		System.out.println("Stack after peak: "+stack);
+		
+		stack.pop();
+		stack.pop();
+		
+		System.out.println("Empty?: "+stack.isEmpty());
+		
+	}
+}
+*/
+/*
+string 입력
+package pack1;
+import java.util.Scanner;
+
+public class day2 
+{
+	
+	public static void main (String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		StringBuffer s = new StringBuffer();
+		
+		s.append(input.next());
+		
+		
+		System.out.println(s);
+	}
+}
+*/
